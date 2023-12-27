@@ -1,77 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: auto;
-            margin-top: 50px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            color: #007bff;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .short-url {
-            margin-top: 20px;
-            text-align: center;
-            word-wrap: break-word;
-        }
-    </style>
+    <!-- Your head content here -->
 </head>
 <body>
     <div class="container">
-        <h1>URL Shortener</h1>
-        <form action="/shorten" method="post">
-            <div class="form-group">
-                <label for="url">Enter URL:</label>
-                <input type="url" class="form-control" id="url" name="url" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Shorten URL</button>
-        </form>
-        {% if short_url %}
-            <div class="short-url">
-                <p>Your Shortened URL:</p>
-                <a href="{{ short_url }}">{{ short_url }}</a>
-            </div>
+        {% if current_user.is_authenticated %}
+            <h1>Welcome, {{ current_user.username }}!</h1>
+            <form action="{{ url_for('urlshortener.shorten') }}" method="post">
+                <div class="form-group">
+                    <label for="url">Enter URL:</label>
+                    <input type="url" class="form-control" id="url" name="url" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Shorten URL</button>
+            </form>
+            {% if short_url %}
+                <div class="short-url">
+                    <p>Your Shortened URL:</p>
+                    <a href="{{ short_url }}">{{ short_url }}</a>
+                </div>
+            {% endif %}
+            <p><a href="{{ url_for('urlshortener.logout') }}">Logout</a></p>
+        {% else %}
+            <h1>URL Shortener</h1>
+            <p>Please <a href="{{ url_for('urlshortener.login') }}">login</a> or <a href="{{ url_for('urlshortener.signup') }}">sign up</a> to use the URL shortener.</p>
         {% endif %}
     </div>
 </body>
