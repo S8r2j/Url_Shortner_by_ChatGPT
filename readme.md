@@ -13,4 +13,3 @@
 ![before url shortening](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/89edc49c-9feb-4cbd-9c18-9a6c01f6c784)
 ## After URL Shortening
 ![after url shortening](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/c96a43bf-8fc3-48e2-8b60-fd773967bac9)
->>>>>>> 9cfe5245727ac30867abcdc5e987851774a2abce
