@@ -1,30 +1,182 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    &lt;!&ndash; Your head content here &ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        {% if current_user.is_authenticated %}-->
+<!--            <h1>Welcome, {{ current_user.username }}!</h1>-->
+<!--            <form action="{{ url_for('urlshortener.shorten') }}" method="post">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="url">Enter URL:</label>-->
+<!--                    <input type="url" class="form-control" id="url" name="url" required>-->
+<!--                </div>-->
+<!--                <button type="submit" class="btn btn-primary">Shorten URL</button>-->
+<!--            </form>-->
+<!--            {% if short_url %}-->
+<!--                <div class="short-url">-->
+<!--                    <p>Your Shortened URL:</p>-->
+<!--                    <a href="{{ short_url }}">{{ short_url }}</a>-->
+<!--                </div>-->
+<!--            {% endif %}-->
+<!--            <p><a href="{{ url_for('urlshortener.logout') }}">Logout</a></p>-->
+<!--        {% else %}-->
+<!--            <h1>URL Shortener</h1>-->
+<!--            <p>Please <a href="{{ url_for('urlshortener.login') }}">login</a> or <a href="{{ url_for('urlshortener.signup') }}">sign up</a> to use the URL shortener.</p>-->
+<!--        {% endif %}-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Your head content here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>URL Shortener</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyO8AuUSeU6t2tHo9LZntnJKUWt2t6fb" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            width: 400px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .card-header {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .short-url {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .short-url a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .short-url a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .logout-link a {
+            color: #dc3545;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout-link a:hover {
+            text-decoration: underline;
+        }
+        .get-started-content {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .get-started-content p {
+            font-size: 18px;
+            color: #495057;
+        }
+
+        .get-started-links a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .get-started-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        {% if current_user.is_authenticated %}
+
+{% if current_user.is_authenticated %}
+    <div class="card">
+        <div class="card-header">
             <h1>Welcome, {{ current_user.username }}!</h1>
-            <form action="{{ url_for('urlshortener.shorten') }}" method="post">
-                <div class="form-group">
-                    <label for="url">Enter URL:</label>
-                    <input type="url" class="form-control" id="url" name="url" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Shorten URL</button>
-            </form>
-            {% if short_url %}
-                <div class="short-url">
-                    <p>Your Shortened URL:</p>
-                    <a href="{{ short_url }}">{{ short_url }}</a>
-                </div>
-            {% endif %}
-            <p><a href="{{ url_for('urlshortener.logout') }}">Logout</a></p>
-        {% else %}
-            <h1>URL Shortener</h1>
-            <p>Please <a href="{{ url_for('urlshortener.login') }}">login</a> or <a href="{{ url_for('urlshortener.signup') }}">sign up</a> to use the URL shortener.</p>
+        </div>
+        <form action="{{ url_for('urlshortener.shorten') }}" method="post">
+            <div class="form-group">
+                <label for="url">Enter URL:</label>
+                <input type="url" class="form-control" id="url" name="url" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Shorten URL</button>
+        </form>
+        {% if short_url %}
+            <div class="short-url">
+                <p>Your Shortened URL:</p>
+                <a href="{{ short_url }}">{{ short_url }}</a>
+            </div>
         {% endif %}
+        <div class="logout-link">
+            <a href="{{ url_for('urlshortener.logout') }}">Logout</a>
+        </div>
     </div>
+{% else %}
+    <!-- Content for when the user is logged out -->
+    <div class="card">
+    <div class="card-header">
+        <h1>Get Started</h1>
+    </div>
+    <div class="get-started-links">
+        <a href="{{ url_for('urlshortener.login') }}">Login</a>
+        <span>|</span>
+        <a href="{{ url_for('urlshortener.signup') }}">Sign Up</a>
+    </div>
+</div>
+{% endif %}
+
+<!-- Bootstrap JS and dependencies (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJz3F6cAkXKlC8hDZJzydy7EG5FYOVoWb8Ix9qE2O3BH5ghMS4tzC" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyO8AuUSeU6t2tHo9LZntnJKUWt2t6fb" crossorigin="anonymous"></script>
+
 </body>
 </html>
