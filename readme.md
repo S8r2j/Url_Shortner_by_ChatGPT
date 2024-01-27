@@ -18,10 +18,13 @@
 ## Login URL Shortening
 ![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/b81f6011-99b9-496e-8e66-23d0d5a7e9ff)
 
-## Before URL Shortening
-![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/46725898-959f-4b36-aa08-90c10d7b2d65)
+## After Log in and Before URL Shortening
+![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/4ae5c29f-c4f5-49d7-9dd7-4e5fb2008e6f)
 
-## After URL Shortening
+## After URL Shortening and After Log in
+![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/c08406aa-4de8-4ef2-a050-44471c236789)
+
+## Before Log in and After URL Shortening
 ![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/bb1dea02-0647-4240-907c-59efb0f556cf)
 
 
