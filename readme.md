@@ -10,15 +10,21 @@
 > 7. Setup your MySQL and create database
 > 8. Run the command:<br><b>&nbsp;&nbsp;<i> python main.py
 ## Get Started URL Shortening
-![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/770ad5d7-432f-4fa1-a415-032b043a2d68)
+![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/46725898-959f-4b36-aa08-90c10d7b2d65)
+
 ## Signup URL Shortening
 ![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/41d0a1b8-bd9f-443e-bb47-3ef85be62be1)
+
 ## Login URL Shortening
 ![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/b81f6011-99b9-496e-8e66-23d0d5a7e9ff)
 
-## Before URL Shortening
-![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/e85a8f97-931e-41a6-a083-f320fb5c3e14)
+## After Log in and Before URL Shortening
+![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/4ae5c29f-c4f5-49d7-9dd7-4e5fb2008e6f)
 
-## After URL Shortening
-![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/fdde4c25-69dd-47c2-831e-98bed2f981e1)
+## After URL Shortening and After Log in
+![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/c08406aa-4de8-4ef2-a050-44471c236789)
+
+## Before Log in and After URL Shortening
+![image](https://github.com/S8r2j/Url_Shortner_by_ChatGPT/assets/101032943/bb1dea02-0647-4240-907c-59efb0f556cf)
+
 
