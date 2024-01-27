@@ -1,182 +1,399 @@
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
 <!--<head>-->
-<!--    &lt;!&ndash; Your head content here &ndash;&gt;-->
+<!--<meta charset="UTF-8">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--<title>URL Shortener</title>-->
+<!--<style>-->
+<!--  body{-->
+<!--    font-family: Arial, sans-serif;-->
+<!--    margin: 0;-->
+<!--    padding: 0;-->
+<!--    height: 100vh;-->
+<!--  }-->
+<!--  .bg-image{-->
+<!--    background-image: url('https://ik.imagekit.io/Suraj123/My%20personal/bg3_CId_g5cWl?updatedAt=1706326056480');-->
+<!--    height: 100%;-->
+<!--    background-position: center;-->
+<!--    background-repeat: no-repeat;-->
+<!--    background-size: cover;-->
+<!--  }-->
+
+<!--  .navbar {-->
+<!--    display: flex;-->
+<!--    justify-content: space-between;-->
+<!--    padding: 1rem;-->
+<!--    background-color: #2a3f54;-->
+<!--    color: white;-->
+<!--  }-->
+
+<!--  .brand-title {-->
+<!--    font-size: 1.5rem;-->
+<!--  }-->
+
+<!--  .search-area {-->
+<!--    background-color: white;-->
+<!--    padding: 20px; /* Adjust the padding as needed */-->
+<!--    border-radius: 10px; /* Add rounded corners to the container */-->
+<!--    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */-->
+<!--    width: 400px;-->
+<!--    height: 250px;-->
+<!--    display: flex;-->
+<!--    flex-direction: column;-->
+<!--    align-items: center; /* Center the content vertically */-->
+<!--    text-align: left; /* Center the content horizontally */-->
+<!--    justify-content: center;-->
+<!--  }-->
+
+<!--  .headline {-->
+<!--    font-size: 2rem;-->
+<!--    color: #333;-->
+<!--    text-align: left;-->
+<!--  }-->
+
+<!--  .search-box {-->
+<!--    width: 100%;-->
+<!--    padding: 0.5rem;-->
+<!--    margin-top: 1rem;-->
+<!--    margin-bottom: 10px;-->
+<!--    border: 2px solid #ccc; /* Example border */-->
+<!--    border-radius: 10px; /* Rounded corners */-->
+<!--    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */-->
+<!--    outline: none; /* Remove focus outline */-->
+<!--    font-size: 20px; /* Adjust text size as necessary */-->
+<!--    text-align: left; /* Center text */-->
+<!--  }-->
+
+<!--  .btn {-->
+<!--    padding: 10px 20px; /* Adjust as necessary */-->
+<!--    border-radius: 10px; /* Match search box's border radius */-->
+<!--    border: none; /* Remove default border */-->
+<!--    background-color: #007bff; /* Example button color */-->
+<!--    color: white; /* Text color */-->
+<!--    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow */-->
+<!--    cursor: pointer; /* Change cursor on hover */-->
+<!--    outline: none; /* Remove focus outline */-->
+<!--    transition: background-color 0.3s;-->
+<!--  }-->
+<!--  .btn-sp{-->
+<!--    border-radius: 10px; /* Match search box's border radius */-->
+<!--    border: none; /* Remove default border */-->
+<!--    background-color: #007bff; /* Example button color */-->
+<!--    color: white; /* Text color */-->
+<!--    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow */-->
+<!--    cursor: pointer; /* Change cursor on hover */-->
+<!--    outline: none; /* Remove focus outline */-->
+<!--    transition: background-color 0.3s;-->
+<!--    width: calc(100% - 20px); /* Subtract the total horizontal padding */-->
+<!--    padding: 0.5rem;-->
+<!--    margin-top: 1rem;-->
+<!--    font-size: 20px;-->
+<!--    box-sizing: border-box; /* Include padding and border in the width and height */-->
+<!--    }-->
+
+<!--   .btn-sp:hover{-->
+<!--     background-color: #00b303;-->
+<!--     }-->
+
+<!--  .btn:hover{-->
+<!--    background-color: #00b303;-->
+<!--   }-->
+
+<!--  .btn-signup {-->
+<!--    background-color: #007bff;-->
+<!--  }-->
+
+<!--  a{-->
+<!--    text-decoration:none;-->
+<!--  }-->
+
+<!--  .box{-->
+<!--    display: flex;-->
+<!--    justify-content: left;-->
+<!--    margin: 3% 10px;-->
+<!--    text-align: left-->
+<!--    }-->
+
+<!--   .search-box{-->
+<!--    width: calc(100% - 20px); /* Subtract the total horizontal padding */-->
+<!--    padding: 0.2rem;-->
+<!--    margin-top: 1rem;-->
+<!--    font-size: 20px;-->
+<!--    border: 2px solid #ccc; /* Ensure this is the same for both */-->
+<!--    border-radius: 10px;-->
+<!--    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);-->
+<!--    outline: none;-->
+<!--    box-sizing: border-box; /* Include padding and border in the width and height */-->
+<!--  }-->
+
+<!--  .dropdown-menu {-->
+<!--    width: calc(50% - 15px); /* Subtract the total horizontal padding */-->
+<!--    padding: 0.5rem;-->
+<!--    margin-top: 1rem;-->
+<!--    font-size: 20px;-->
+<!--    border: 2px solid #ccc; /* Ensure this is the same for both */-->
+<!--    border-radius: 10px;-->
+<!--    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);-->
+<!--    outline: none;-->
+<!--    box-sizing: border-box; /* Include padding and border in the width and height */-->
+<!--  }-->
+
+<!--  .dropdown-menu option:disabled {-->
+<!--    color: white;-->
+<!--    background-color:grey;-->
+<!--  }-->
+
+<!--  /* Add responsiveness for smaller screens */-->
+<!--  @media (max-width: 600px) {-->
+<!--    .search-area {-->
+<!--      width: 100%;-->
+<!--      height:350px;-->
+<!--    }-->
+<!--  }-->
+<!--</style>-->
 <!--</head>-->
 <!--<body>-->
-<!--    <div class="container">-->
-<!--        {% if current_user.is_authenticated %}-->
-<!--            <h1>Welcome, {{ current_user.username }}!</h1>-->
-<!--            <form action="{{ url_for('urlshortener.shorten') }}" method="post">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="url">Enter URL:</label>-->
-<!--                    <input type="url" class="form-control" id="url" name="url" required>-->
-<!--                </div>-->
-<!--                <button type="submit" class="btn btn-primary">Shorten URL</button>-->
-<!--            </form>-->
-<!--            {% if short_url %}-->
-<!--                <div class="short-url">-->
-<!--                    <p>Your Shortened URL:</p>-->
-<!--                    <a href="{{ short_url }}">{{ short_url }}</a>-->
-<!--                </div>-->
-<!--            {% endif %}-->
-<!--            <p><a href="{{ url_for('urlshortener.logout') }}">Logout</a></p>-->
-<!--        {% else %}-->
-<!--            <h1>URL Shortener</h1>-->
-<!--            <p>Please <a href="{{ url_for('urlshortener.login') }}">login</a> or <a href="{{ url_for('urlshortener.signup') }}">sign up</a> to use the URL shortener.</p>-->
-<!--        {% endif %}-->
-<!--    </div>-->
+<!--<div class="bg-image">-->
+<!--<div class="navbar">-->
+<!--  <div class="brand-title">URL Shortener</div>-->
+<!--  <div>-->
+<!--    <a href="{{ url_for('urlshortener.login') }}"><button class="btn">Login</button></a>-->
+<!--    <a href="{{ url_for('urlshortener.signup') }}"><button class="btn btn-signup">Signup</button></a>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="box">-->
+<!--<div class="search-area">-->
+<!--  <div class="headline">Quick Shortener</div>-->
+<!--  <input type="text" class="search-box" placeholder="Paste your long URL here">-->
+<!--  <div class="iniln">-->
+<!--    <h3>Customized URL</h3>-->
+<!--  <select class="dropdown-menu">-->
+<!--    <option value="quicklink">quicklink.com</option>-->
+<!--    <option value="custdomain" disabled>Custom Domain</option>-->
+<!--  </select>-->
+<!--  <input type="text" class="dropdown-menu" placeholder="Enter your alias"></div>-->
+<!--  <button class="btn-sp">Shorten</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--<title>QuickLink: Swift & Simple URL Shortening</title>-->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">-->
+<!--<style>-->
+<!--  /* Basic Reset */-->
+<!--  * { margin: 0; padding: 0; box-sizing: border-box; }-->
+<!--  body, input, button {-->
+<!--  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
+<!--}-->
+
+<!--  /* Header styles */-->
+<!--  header {-->
+<!--    background-color: #4C4C6D;-->
+<!--    color: #FFFFFF;-->
+<!--    display: flex;-->
+<!--    justify-content: space-between;-->
+<!--    align-items: center;-->
+<!--    padding: 10px 5%;-->
+<!--  }-->
+<!--  .login-signup a {-->
+<!--    color: #FFFFFF;-->
+<!--    text-decoration: none;-->
+<!--    margin-left: 10px;-->
+<!--  }-->
+
+<!--  /* Main Styles */-->
+<!--  main {-->
+<!--    text-align: center;-->
+<!--    padding: 40px 20px;-->
+<!--    background: #F4F4F9;-->
+<!--  }-->
+<!--  .url-form {-->
+<!--    margin: 20px auto;-->
+<!--    width: 80%;-->
+<!--    max-width: 500px;-->
+<!--  }-->
+<!--  .url-form input[type="text"] {-->
+<!--    width: calc(100% - 20px);-->
+<!--    padding: 15px;-->
+<!--    border: none;-->
+<!--    border-radius: 5px 0 0 5px;-->
+<!--    margin-bottom: 10px;-->
+<!--  }-->
+<!--  .url-form button {-->
+<!--    padding: 16px 20px;-->
+<!--    border: none;-->
+<!--    background-color: #22A7F0;-->
+<!--    color: white;-->
+<!--    cursor: pointer;-->
+<!--    border-radius: 0 5px 5px 0;-->
+<!--    margin-bottom: 10px;-->
+<!--  }-->
+<!--  .url-form button:hover {-->
+<!--    background-color: #1F4788;-->
+<!--  }-->
+
+<!--  /* Features Styles */-->
+<!--  .features {-->
+<!--    display: flex;-->
+<!--    justify-content: center;-->
+<!--    flex-wrap: wrap;-->
+<!--    gap: 20px;-->
+<!--    padding-top: 20px;-->
+<!--  }-->
+
+<!--  .feature-item {-->
+<!--    width: 150px;-->
+<!--    height: 150px;-->
+<!--    background-color: #FFFFFF;-->
+<!--    border-radius: 50%;-->
+<!--    display: flex;-->
+<!--    justify-content: center;-->
+<!--    align-items: center;-->
+<!--    flex-direction: column;-->
+<!--    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);-->
+<!--    transition: box-shadow 0.3s ease;-->
+<!--    position: relative;-->
+<!--  }-->
+
+<!--  .feature-item:hover {-->
+<!--    box-shadow: 0 0 0 4px rgba(255,255,255,0.5),-->
+<!--                0 0 0 8px rgba(33,150,243,0.5),-->
+<!--                0 0 0 12px rgba(255,193,7,0.5),-->
+<!--                0 0 0 16px rgba(76,175,80,0.5);-->
+<!--  }-->
+
+<!--  .feature-item i {-->
+<!--    font-size: 2rem;-->
+<!--    margin-bottom: 10px;-->
+<!--    color: #4C4C6D;-->
+<!--  }-->
+
+<!--  .feature-item h3 {-->
+<!--    color: #333;-->
+<!--    font-size: 1rem;-->
+<!--  }-->
+
+
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<header>-->
+<!--  <div class="logo">QuickLink</div>-->
+<!--  <nav class="login-signup">-->
+<!--    <a href="#login">Login</a> | <a href="#signup">Signup</a>-->
+<!--  </nav>-->
+<!--</header>-->
+
+<!--<main>-->
+<!--  <div class="url-form">-->
+<!--    <input type="text" name="url" placeholder="Enter URL here">-->
+<!--    <button>Shorten</button>-->
+<!--  </div>-->
+
+<!--  <h2>Features</h2>-->
+<!--  <ul class="features">-->
+<!--    <li class="feature-item">-->
+<!--      <i class="fas fa-link"></i>-->
+<!--      <h3>Short Link</h3>-->
+<!--    </li>-->
+<!--    <li class="feature-item">-->
+<!--      <i class="fas fa-globe-americas"></i>-->
+<!--      <h3>Custom Domain</h3>-->
+<!--    </li>-->
+<!--    <li class="feature-item">-->
+<!--      <i class="fas fa-chart-bar"></i>-->
+<!--      <h3>Analytics</h3>-->
+<!--    </li>-->
+<!--    <li class="feature-item">-->
+<!--      <i class="fas fa-qrcode"></i>-->
+<!--      <h3>QR Code</h3>-->
+<!--    </li>-->
+<!--    <li class="feature-item">-->
+<!--      <i class="fas fa-tools"></i>-->
+<!--      <h3>Advanced Control</h3>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</main>-->
+
 <!--</body>-->
 <!--</html>-->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>URL Shortener</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyO8AuUSeU6t2tHo9LZntnJKUWt2t6fb" crossorigin="anonymous">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .card {
-            width: 400px;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
-
-        .card-header {
-            text-align: center;
-            font-size: 36px;
-            font-weight: bold;
-            color: #007bff;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-control {
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
-            width: 100%;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        .short-url {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .short-url a {
-            color: #28a745;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .short-url a:hover {
-            text-decoration: underline;
-        }
-
-        .logout-link {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .logout-link a {
-            color: #dc3545;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .logout-link a:hover {
-            text-decoration: underline;
-        }
-        .get-started-content {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .get-started-content p {
-            font-size: 18px;
-            color: #495057;
-        }
-
-        .get-started-links a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 10px;
-        }
-
-        .get-started-links a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickLink: Swift & Simple URL Shortening</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://kit.fontawesome.com/yourfontawesomekit.js"></script> <!-- Replace with your Font Awesome kit link -->
 </head>
 <body>
 
-{% if current_user.is_authenticated %}
-    <div class="card">
-        <div class="card-header">
-            <h1>Welcome, {{ current_user.username }}!</h1>
-        </div>
-        <form action="{{ url_for('urlshortener.shorten') }}" method="post">
-            <div class="form-group">
-                <label for="url">Enter URL:</label>
-                <input type="url" class="form-control" id="url" name="url" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Shorten URL</button>
-        </form>
-        {% if short_url %}
-            <div class="short-url">
-                <p>Your Shortened URL:</p>
-                <a href="{{ short_url }}">{{ short_url }}</a>
-            </div>
-        {% endif %}
-        <div class="logout-link">
-            <a href="{{ url_for('urlshortener.logout') }}">Logout</a>
-        </div>
-    </div>
-{% else %}
-    <!-- Content for when the user is logged out -->
-    <div class="card">
-    <div class="card-header">
-        <h1>Get Started</h1>
-    </div>
-    <div class="get-started-links">
-        <a href="{{ url_for('urlshortener.login') }}">Login</a>
-        <span>|</span>
-        <a href="{{ url_for('urlshortener.signup') }}">Sign Up</a>
-    </div>
-</div>
-{% endif %}
+<header>
+  <div class="logo">QuickLink</div>
+  <nav class="login-signup">
+    <span><a href="{{ url_for('urlshortener.login') }}">Login</a></span>
+    <span><a href="{{ url_for('urlshortener.signup') }}">Signup</a></span>
+  </nav>
+</header>
 
-<!-- Bootstrap JS and dependencies (optional) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJz3F6cAkXKlC8hDZJzydy7EG5FYOVoWb8Ix9qE2O3BH5ghMS4tzC" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyO8AuUSeU6t2tHo9LZntnJKUWt2t6fb" crossorigin="anonymous"></script>
+<main>
+  <div class="url-form">
+    <form id="urlForm" method="POST" action="/shorten/">
+      <input type="text" id="urlInput" name="url" placeholder="Enter URL here" required>
+      {% if short_url %}
+        <div class="url-display">
+        <strong>Shortened URL:</strong>
+        <span id="shortUrl">{{ short_url }}</span>
+        <i class="fas fa-clipboard" onclick="copyToClipboard()"></i>
+      </div>
+    {% endif %}
+      <button type="submit" class="bttn">Shorten</button>
+    </form>
+  </div>
 
+  <h2>Features</h2>
+  <section class="features">
+    <div class="feature-item">
+      <i class="fas fa-link"></i>
+      <h3>Short Link</h3>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-globe-americas"></i>
+      <h3>Custom Domain</h3>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-chart-bar"></i>
+      <h3>Analytics</h3>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-qrcode"></i>
+      <h3>QR Code</h3>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-tools"></i>
+      <h3>Advanced Control</h3>
+    </div>
+  </section>
+</main>
+
+<script>
+function copyToClipboard() {
+  var copyText = document.getElementById("shortUrl").innerText;
+  navigator.clipboard.writeText(copyText).then(() => {
+    alert("URL copied to clipboard!");
+  }).catch(err => {
+    console.error('Error:', err);
+  });
+}
+</script>
 </body>
 </html>

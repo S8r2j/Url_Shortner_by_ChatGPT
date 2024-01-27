@@ -1,0 +1,142 @@
+  /* Basic Reset */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body, input, button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+  /* Header styles */
+  header {
+    background-color: #4C4C6D;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+  }
+  .login-signup a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+
+  /* Main Styles */
+  main {
+    text-align: center;
+    padding: 40px 20px;
+    background: #F4F4F9;
+  }
+  .url-form {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 500px;
+  }
+  .url-form input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 15px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    margin-bottom: 10px;
+  }
+
+  /* Features Styles */
+  .features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+  }
+
+  .feature-item {
+    width: 150px;
+    height: 150px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .feature-item:hover {
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.5),
+                0 0 0 8px rgba(33,150,243,0.5),
+                0 0 0 12px rgba(255,193,7,0.5),
+                0 0 0 16px rgba(76,175,80,0.5);
+  }
+
+  .feature-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #4C4C6D;
+  }
+
+  .feature-item h3 {
+    color: #333;
+    font-size: 1rem;
+  }
+
+  .shorturl{
+  margin-top: 20px; padding: 10px; background-color: #FFFFFF; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  /* Existing styles... */
+
+.url-display {
+  margin-top:10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.url-display i {
+  margin-left: 20px;
+  cursor: pointer;
+}
+/* Existing styles... */
+
+/* Styling for Login and Signup buttons */
+.login-signup a {
+  text-decoration: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 2px solid green;
+  transition: all 0.3s ease;
+  color: white; /* Text color */
+  text-align: center;
+}
+
+.bttn{
+   text-decoration: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 2px solid green;
+  transition: all 0.3s ease;
+  color: white; /* Text color */
+  background-color: #4C4C6D;
+  text-align: center;
+}
+.login-signup span {
+  margin: 0 -4px; /* Add spacing around each span element */
+}
+
+.login-signup a:hover {
+    background-color: green;
+    color: white;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Other CSS styles... */
+
+
+.bttn:hover{
+    background-color: green;
+    color: white;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}

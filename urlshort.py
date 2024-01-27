@@ -25,27 +25,24 @@ def index():
     return render_template('index.html')
 
 
-@router.route('/shorten', methods = ['POST'])
-@login_required
+@router.route('/shorten/', methods = ['POST'])
 def shorten():
     original_url = request.form.get('url')
-
     if not original_url.startswith(('http://', 'https://')):
         original_url = 'http://' + original_url
 
-    url_entry = Url.query.filter_by(original_url = original_url, user = current_user).first()
+    url_entry = Url.query.filter_by(original_url = original_url).first()
 
     if url_entry:
         short_url = url_entry.short_url
     else:
         short_url = generate_short_url()
-        new_url = Url(original_url = original_url, short_url = short_url, user = current_user)
+        new_url = Url(original_url = original_url, short_url = short_url)
         db.session.add(new_url)
         db.session.commit()
 
     host = request.host_url
     full_short_url = host + short_url
-
     return render_template('index.html', short_url = full_short_url)
 
 
