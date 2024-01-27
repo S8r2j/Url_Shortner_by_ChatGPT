@@ -45,6 +45,26 @@ def shorten():
     full_short_url = host + short_url
     return render_template('index.html', short_url = full_short_url)
 
+@router.route('/short/url/', methods = ['POST'])
+@login_required
+def shorturl():
+    original_url = request.form.get('url')
+    if not original_url.startswith(('http://', 'https://')):
+        original_url = 'http://' + original_url
+
+    url_entry = Url.query.filter_by(original_url = original_url).first()
+
+    if url_entry:
+        short_url = url_entry.short_url
+    else:
+        short_url = generate_short_url()
+        new_url = Url(original_url = original_url, short_url = short_url)
+        db.session.add(new_url)
+        db.session.commit()
+
+    host = request.host_url
+    full_short_url = host + short_url
+    return render_template('welcome.html', user_name= current_user.username, short_url = full_short_url)
 
 @router.route('/<short_url>')
 def redirect_to_original(short_url):
@@ -79,7 +99,11 @@ def signup():
 
     return render_template('signup.html')
 
-
+@router.route('/profile/', methods = ['GET', 'POST'])
+@login_required
+def profile():
+    user = current_user
+    return render_template('welcome.html', user_name = user.username)
 @router.route('/login', methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -90,7 +114,7 @@ def login():
 
         if user and user.password == password:
             login_user(user)
-            return redirect(url_for('urlshortener.index'))
+            return redirect(url_for('urlshortener.profile'))
         else:
             return 'Invalid login credentials.'
 

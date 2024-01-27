@@ -1,0 +1,72 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Styles */
+.welcome-header {
+  background-color: #4C4C6D;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5%;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 1.5em;
+}
+
+.user-nav a {
+  color: white;
+  padding: 0 10px;
+}
+
+.user-nav a:hover {
+  color: #FF758C;
+}
+
+/* Welcome Content */
+.welcome-content {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.welcome-message h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.quick-links {
+  margin-top: 30px;
+}
+
+.btn {
+  background-color: #6DD5FA;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  display: inline-block; /* Makes the link behave like a button */
+  margin: 5px;
+}
+
+.btn:hover {
+  background-color: #FF758C;
+}
+
+/* Footer Styles */
+.main-footer {
+  /* Footer styling */
+  text-align: center;
+  padding: 20px 0;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to QuickLink</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<header class="welcome-header">
+  <div class="header-logo">
+    QuickLink
+  </div>
+  <nav class="user-nav">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/profile">Profile</a>
+    <a href="/settings">Settings</a>
+    <a href="{{ url_for('urlshortener.logout')}}">Logout</a>
+  </nav>
+</header>
+
+<main class="welcome-content">
+  <div class="welcome-message">
+    <h1>Welcome, {{ user_name }}!</h1>
+    <div class="url-form">
+    <form id="urlForm" method="POST" action="/short/url/">
+      <input type="text" id="urlInput" name="url" placeholder="Enter URL here" required>
+      {% if short_url %}
+        <div class="url-display">
+        <strong>Shortened URL:</strong>
+        <span id="shortUrl">{{ short_url }}</span>
+        <i class="fas fa-clipboard" onclick="copyToClipboard()"></i>
+      </div>
+    {% endif %}
+      <button type="submit" class="bttn">Shorten</button>
+    </form>
+  </div>
+    <p>Explore what's new today.</p>
+  </div>
+  <div class="quick-links">
+    <a href="/explore" class="btn">Explore</a>
+    <a href="/connect" class="btn">Connect</a>
+    <a href="/help" class="btn">Help & Support</a>
+  </div>
+</main>
+<script>
+function copyToClipboard() {
+  var copyText = document.getElementById("shortUrl").innerText;
+  navigator.clipboard.writeText(copyText).then(() => {
+    alert("URL copied to clipboard!");
+  }).catch(err => {
+    console.error('Error:', err);
+  });
+}
+</script>
+
+<footer class="main-footer">
+  <!-- Footer content here -->
+</footer>
+
+</body>
+</html>
